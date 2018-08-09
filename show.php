@@ -11,10 +11,10 @@
     <title>cookies</title>
 </head>
 <body>
-    <table border='1' width='70%' style="margin:0 auto;margin-top:50px;">
+    <table width="75%" border="1" align="center" style="margin-top:50px;table-layout:fixed;word-break:break-all;">
         <tr>
-            <th width='95%'>Data</th>
-            <th width='5%'>Opt</th>
+            <th width="95%">Data</th>
+            <th width="5%">Opt</th>
         </tr>
 
         <?php
@@ -25,7 +25,7 @@
 
                 foreach($result as $key => $value){
                     echo "<tr>";
-                        echo "<td width='95%'>";
+                        echo "<td id='td1'>";
                             echo "Date: ".date('Y-m-d H:i:s',$value['date'])."<br>";
                             echo "IP: ".$value['ip']."<br>";
                             echo "Screen: ".$value['screen']."<br>";
@@ -40,7 +40,7 @@
                             echo "TopLocation: ".$value['toplocation']."<br>";
                             echo "Cookie: ".$value['cookie']."<br>";
                         echo "</td>";
-                        echo "<td width='5%'><a href='del.php?id={$value['id']}&token={$_SESSION['token']}'>Delete</a></td>";
+                        echo "<td id='td2'><a href='del.php?id={$value['id']}&token={$_SESSION['token']}'>Delete</a></td>";
                     echo "</tr>";
                 }
             } else {
@@ -50,5 +50,3 @@
     </table>
 </body>
 </html>
-
-
