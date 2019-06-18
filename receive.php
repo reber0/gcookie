@@ -62,19 +62,19 @@ $cookie     = htmlspecialchars(quotes($_GET['cookie']));
 
 $db = new mysql();
 $arr = array();
-$arr['date'] = $date;
-$arr['ip'] = $ip;
-$arr['screen'] = $screen;
-$arr['browser'] = $browser;
-$arr['flash'] = $flash;
-$arr['useragent'] = $ua;
-$arr['domain'] = $domain;
-$arr['title'] = $title;
-$arr['lang'] = $lang;
-$arr['referer'] = $referer;
-$arr['location'] = $location;
+$arr['date']        = $date;
+$arr['ip']          = $ip;
+$arr['screen']      = $screen;
+$arr['browser']     = $browser;
+$arr['flash']       = $flash;
+$arr['useragent']   = $ua;
+$arr['domain']      = $domain;
+$arr['title']       = $title;
+$arr['lang']        = $lang;
+$arr['referer']     = $referer;
+$arr['location']    = $location;
 $arr['toplocation'] = $toplocation;
-$arr['cookie'] = $cookie;
+$arr['cookie']      = $cookie;
 $db->insert('cookies',$arr);
 
 ?>
