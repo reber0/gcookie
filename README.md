@@ -1,4 +1,4 @@
-根据https://github.com/evilcos/xssprobe 简单改写的
+根据 https://github.com/evilcos/xssprobe 简单改写的
 
 这个只是自己简单使用，这里仅作记录
 
