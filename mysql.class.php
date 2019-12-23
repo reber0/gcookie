@@ -12,7 +12,7 @@ class mysql {
         $config = array(
             'DB_TYPE' => 'mysql',
             'DB_HOST' => 'localhost',
-            'DB_NAME' => 'xss', 
+            'DB_NAME' => 'xss',
             'DB_USER' => 'root',
             'DB_PASS' => 'root',
             'DB_CHARSET' => 'utf8',
@@ -38,7 +38,7 @@ class mysql {
 
     //执行语句
     public function query($sql){
-        
+
         $result = @mysql_query($sql);
 
         if (!$result) {
@@ -75,7 +75,7 @@ class mysql {
         while ($row = @mysql_fetch_assoc($result)) {
             $rows[$i] = $row;
             // print_r($rows[$i]);
-            $i++; 
+            $i++;
         }
         return $rows;
     }
@@ -95,6 +95,7 @@ class mysql {
     //插入数据
     public function insert($tab,$arr,$debug=False)
     {
+        $arr = $this->filter($arr);
         $value = '';
         $column = '';
         foreach ($arr as $k => $v) {
@@ -125,12 +126,13 @@ class mysql {
     //更新数据
     public function update($tab,$arr,$condition = '',$debug=False)
     {
+        $arr = $this->filter($arr);
         if (!$condition) {
             die("error".mysql_error());
         } else {
             $condition = ' ' . $condition;
         }
-        
+
         $value = '';
         foreach ($arr as $k => $v) {
             $value .= "{$k}='{$v}',";
@@ -144,7 +146,7 @@ class mysql {
             $this->query($sql);
             $num = $this->affected_num();
 
-            return $num;            
+            return $num;
         }
     }
 
@@ -163,6 +165,19 @@ class mysql {
         }
     }
 
+    //过滤
+    public function filter($content)
+    {
+        if(is_array($content)){
+            foreach($content as $key=>$value){
+                $content[$key] = mysql_real_escape_string($value);
+            }
+        }else{
+            $content = mysql_real_escape_string($content);
+        }
+        return $content;
+    }
+
     //返回受影响行数
     public function affected_num()
     {
@@ -172,7 +187,7 @@ class mysql {
 
     //关闭数据库连接
     public function close()
-    {  
+    {
         mysql_close($this->conn);
         // mysql_close();
     }
