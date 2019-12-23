@@ -1,6 +1,6 @@
 根据 https://github.com/evilcos/xssprobe 简单改写的
 
-这里我改了下，只是说明 xss 获取数据流程(存在注入)
+这里我改了下，只是说明 xss 获取数据流程
 
 密码在index.php和mysql.class.php中修改
 
