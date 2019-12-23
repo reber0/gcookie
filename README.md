@@ -3,3 +3,5 @@
 这个只是自己简单使用，这里仅作记录
 
 密码在index.php和mysql.class.php中修改
+
+记得修改 1.js 里 http_server 的 ip
